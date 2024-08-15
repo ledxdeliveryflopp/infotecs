@@ -1,0 +1,1 @@
+{"uuid": "ad29e68e-4648-40be-a605-c0d63f17b052", "children": ["7e155e2a-2bbb-4b2e-9839-9d24a00067e6"], "befores": [{"name": "HttpxClient", "status": "passed", "start": 1723719603707, "stop": 1723719603720}], "afters": [{"name": "HttpxClient::finalizer", "status": "passed", "start": 1723719603980, "stop": 1723719603980}], "start": 1723719603707, "stop": 1723719603980}
