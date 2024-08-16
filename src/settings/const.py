@@ -1,4 +1,5 @@
 class JsonConst:
+    """Константы тестовых данных"""
     SUCCESS_JSON: dict = {"x": 10, "y": 2}
     SUCCESS_REMAINDER_JSON: dict = {"x": 15, "y": 2}
     SUCCESS_JSON_REMAINDER: dict = {"x": 15, "y": 2}
@@ -9,6 +10,7 @@ class JsonConst:
 
 
 class JsonErrorConst:
+    """Константы ответов API"""
     BAD_KEYS: dict = {'statusCode': 2, 'statusMessage': 'Не указаны необходимые параметры'}
     BAD_KEYS_FORMAT: dict = {'statusCode': 3, 'statusMessage': 'Значения параметров должны быть целыми'}
     LONG_INT: dict = {'statusCode': 4, 'statusMessage': 'Превышены максимальные значения параметров'}
