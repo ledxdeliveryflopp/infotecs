@@ -11,7 +11,7 @@ class TestAdditionRouter:
     failed_json_long_int: dict = {"x": 23123124124124124, "y": 123124213}
 
     @classmethod
-    @allure.title("Тестирование сложения API")
+    @allure.title("Тестирование сложения API(успешное сложение)")
     @allure.description("Тестирование успешного сложения 2х чисел")
     @allure.tag("addition")
     async def test_success_addiction(cls, HttpxClient) -> None:
@@ -54,12 +54,11 @@ class TestAdditionRouter:
         with allure.step("Сравнение ожидаемого ответа"):
             assert response.json() == {'statusCode': 4, 'statusMessage': 'Превышены максимальные значения параметров'}
 
-
     @classmethod
     @allure.title("Тестирование ошибки сложения API(Неправильный формат тела запроса)")
     @allure.description("Тестирование валидации при сложении если не передать body")
     @allure.tag("addition")
-    async def test_addiction_long_int(cls, HttpxClient) -> None:
+    async def test_addiction_empty_body(cls, HttpxClient) -> None:
         """Тестирование валидации сложения при пустом body"""
         with allure.step(f'Отправка запроса на эндпоинт - {cls.url}'):
             response = await HttpxClient.post(url=cls.url)
