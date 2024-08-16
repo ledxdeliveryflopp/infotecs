@@ -1,10 +1,11 @@
 import allure
+import pytest
 from src.settings.const import Const
 
 
+@pytest.mark.multiplication
 @allure.feature('Тестирование умножения')
 class TestMultiplicationRouter:
-    """Тестирование роутера умножения чисел"""
     url: str = "multiplication"
 
     @classmethod
@@ -12,7 +13,6 @@ class TestMultiplicationRouter:
     @allure.description("Тестирование успешного умножения 2х чисел")
     @allure.tag("multiplication")
     async def test_success_multiplication(cls, HttpxClient) -> None:
-        """Тестирование успешного сложения"""
         with allure.step(f'Отправка запроса на эндпоинт - {cls.url}'):
             response = await HttpxClient.post(url=cls.url, json=Const.json_const.SUCCESS_JSON)
         with allure.step("Сравнение ожидаемого ответа"):
@@ -23,7 +23,6 @@ class TestMultiplicationRouter:
     @allure.description("Тестирование валидации при умножении если передать json с неверными ключами")
     @allure.tag("multiplication")
     async def test_multiplication_bad_json_keys(cls, HttpxClient) -> None:
-        """Тестирование валидации умножение при передаче не верных ключей в body"""
         with allure.step(f'Отправка запроса на эндпоинт - {cls.url}'):
             response = await HttpxClient.post(url=cls.url, json=Const.json_const.FAILED_JSON_KEYS)
         with allure.step("Сравнение ожидаемого ответа"):
@@ -35,7 +34,6 @@ class TestMultiplicationRouter:
                         "данных ")
     @allure.tag("multiplication")
     async def test_multiplication_bad_types(cls, HttpxClient) -> None:
-        """Тестирование валидации сложения при передаче не верного формата данных в body"""
         with allure.step(f'Отправка запроса на эндпоинт - {cls.url}'):
             response = await HttpxClient.post(url=cls.url, json=Const.json_const.FAILED_JSON_FORMAT)
         with allure.step("Сравнение ожидаемого ответа"):
@@ -46,7 +44,6 @@ class TestMultiplicationRouter:
     @allure.description("Тестирование валидации при умножении если передать в body большое число ")
     @allure.tag("multiplication")
     async def test_multiplication_long_int(cls, HttpxClient) -> None:
-        """Тестирование валидации умножения при передаче больших чисел в body"""
         with allure.step(f'Отправка запроса на эндпоинт - {cls.url}'):
             response = await HttpxClient.post(url=cls.url, json=Const.json_const.FAILED_JSON_LONG_INT)
         with allure.step("Сравнение ожидаемого ответа"):
@@ -57,7 +54,6 @@ class TestMultiplicationRouter:
     @allure.description("Тестирование валидации при умножении если не передать body")
     @allure.tag("multiplication")
     async def test_multiplication_empty_body(cls, HttpxClient) -> None:
-        """Тестирование валидации умножения при пустом body"""
         with allure.step(f'Отправка запроса на эндпоинт - {cls.url}'):
             response = await HttpxClient.post(url=cls.url)
         with allure.step("Сравнение ожидаемого ответа"):

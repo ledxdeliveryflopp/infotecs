@@ -1,10 +1,11 @@
 import allure
+import pytest
 from src.settings.const import Const
 
 
+@pytest.mark.addition
 @allure.feature('Тестирование сложения')
 class TestAdditionRouter:
-    """Тестирование эндпоинта сложения чисел"""
     url: str = "addition"
 
     @classmethod

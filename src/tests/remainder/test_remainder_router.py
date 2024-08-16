@@ -1,10 +1,11 @@
 import allure
+import pytest
 from src.settings.const import Const
 
 
+@pytest.mark.remainder
 @allure.feature('Тестирование остатка от деления')
 class TestRemainderRouter:
-    """Тестирование роутера деления чисел c остатком"""
     url: str = "remainder"
 
     @classmethod
